@@ -10,6 +10,7 @@ repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune 
 # fetch submodule
 cd kernel/samsung/m30s
 git submodule init && git submodule update
+croot
 
 # build
 . build/envsetup.sh
