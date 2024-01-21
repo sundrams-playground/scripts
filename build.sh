@@ -10,6 +10,7 @@ repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune 
 cd kernel/samsung/m30s
 git submodule init && git submodule update
 touch Android.mk
+ls firmware/tsp_imagis
 cd ../../..
 
 # build
