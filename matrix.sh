@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #sync
+rm -rf *
 repo init -u https://github.com/ProjectMatrixx/android.git -b 14.0 --git-lfs
 git clone https://github.com/naz664/treble_manifest.git .repo/local_manifests  -b 14
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune
