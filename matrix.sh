@@ -2,7 +2,7 @@
 
 #sync
 rm -rf .repo/local_manifests
-repo init -u https://github.com/ProjectMatrixx/android.git -b 14.0 --git-lfs
+repo init -u https://github.com/xyz-sundram/android.git -b 14.0 --git-lfs
 git clone https://github.com/xyz-sundram/treble_manifest.git .repo/local_manifests  -b 14
 sed -i '/external\/mockito-kotlin/d' .repo/manifest/default.xml
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune
