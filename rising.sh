@@ -4,7 +4,7 @@
 rm -rf .repo/local_manifests
 repo init -u https://github.com/RisingTechOSS/android -b fourteen --git-lfs
 git clone https://github.com/xyz-sundram/local_manifest.git -b rising .repo/local_manifests
-repo sync --current-branch --no-tags -j$(nproc --all) --force-sync
+repo sync -c --no-clone-bundle --optimized-fetch --prune --force-sync -j$(nproc --all)
 
 # build rom
 source build/envsetup.sh
