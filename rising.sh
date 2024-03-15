@@ -11,6 +11,10 @@ cd vendor/lineage
 curl https://github.com/xyz-sundram/android_vendor_lineage/commit/b6971d2c1293ad8c8eb3eba74d40eec8a6b084b2.patch | git am
 cd ../..
 
+# rename sdm660 to msm8998
+rm -rf hardware/qcom-caf/msm8998
+mv hardware/qcom-caf/sdm660 hardware/qcom-caf/msm8998 
+
 # build rom
 source build/envsetup.sh
 lunch rising_tulip-userdebug
