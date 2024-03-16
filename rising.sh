@@ -17,8 +17,10 @@ mv hardware/qcom-caf/sdm660 hardware/qcom-caf/msm8998
 
 # build rom
 source build/envsetup.sh
+export BUILD_BROKEN_DUP_RULES=true
+export TARGET_DISABLE_EPPE=true
 lunch rising_tulip-userdebug
-m bacon
+mka bacon
 
 # crave build command
 # crave run --no-patch "rm -rf rising.sh && wget https://raw.githubusercontent.com/sundrams-playground/scripts/main/rising.sh && chmod +x rising.sh && bash rising.sh"
