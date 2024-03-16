@@ -6,19 +6,11 @@ repo init -u https://github.com/RisingTechOSS/android -b fourteen --git-lfs
 git clone https://github.com/xyz-sundram/local_manifest.git -b rising .repo/local_manifests
 repo sync -c --no-clone-bundle --optimized-fetch --prune --force-sync -j$(nproc --all)
 
-#apply patch for custom hal
-cd vendor/lineage
-curl https://github.com/xyz-sundram/android_vendor_lineage/commit/b6971d2c1293ad8c8eb3eba74d40eec8a6b084b2.patch | git am
-cd ../..
-
-# rename sdm660 to msm8998
-rm -rf hardware/qcom-caf/msm8998
-mv hardware/qcom-caf/sdm660 hardware/qcom-caf/msm8998 
+rm -rf hardware/qcom-caf/common/
+git clone https://github.com/xyz-sundram/android_hardware_qcom-caf_common.git hardware/qcom-caf/common/
 
 # build rom
 source build/envsetup.sh
-export BUILD_BROKEN_DUP_RULES=true
-export TARGET_DISABLE_EPPE=true
 lunch rising_tulip-userdebug
 mka bacon
 
