@@ -11,6 +11,7 @@ git clone https://github.com/xyz-sundram/android_hardware_qcom-caf_common.git ha
 
 # build rom
 source build/envsetup.sh
+export SELINUX_IGNORE_NEVERALLOWS=true
 lunch rising_tulip-userdebug
 mka bacon
 
