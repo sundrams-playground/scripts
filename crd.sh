@@ -1,3 +1,6 @@
+## crave sync issue ?
+rm -rf platform/prebuilts/clang/host/linux-x86
+
 ## sync
 repo init -u https://github.com/crdroidandroid/android.git -b 13.0 --git-lfs
 rm -rf .repo/local_manifests
