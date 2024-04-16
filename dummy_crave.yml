@@ -1,0 +1,4 @@
+LOS 21:
+  env:
+    bot_token: '$bot_token'
+    chat_id: '$chat_id'
