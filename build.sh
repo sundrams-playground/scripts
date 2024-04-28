@@ -8,4 +8,4 @@ repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune 
 # build
 . build/envsetup.sh
 lunch lineage_m307f-userdebug
-mka bacon
+m evolution
