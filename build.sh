@@ -7,8 +7,10 @@ repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune 
 
 # build
 . build/envsetup.sh
+export WITH_GMS=true
 lunch lineage_m307f-userdebug
 m evolution
 
 lunch lineage_m307fn-userdebug
+export WITH_GMS=true
 m evolution
