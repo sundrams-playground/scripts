@@ -82,7 +82,7 @@ minutes=$(( (execution_time_seconds % 3600) / 60 ))
 seconds=$((execution_time_seconds % 60))
 # Format the output
 formatted_time="${hours}h${minutes}m${seconds}s"
-send_telegram_message "Evolution X Build for M307f Completed in $formatted_time"
+send_telegram_message "Evolution X Build for M307fn Completed in $formatted_time"
 
 #upload again
 upload_file "$filepath"
