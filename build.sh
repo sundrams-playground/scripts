@@ -49,6 +49,10 @@ build_m307f() {
 
 start_time=$(date +%s.%N)
 build_m307f
+if [ $? -ne 0 ]; then
+    send_telegram_message "Build Failed :("
+    exit 1
+fi
 end_time=$(date +%s.%N)
 execution_time_seconds=$(echo "$end_time - $start_time" | bc)
 
