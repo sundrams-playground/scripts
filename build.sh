@@ -24,10 +24,9 @@ upload_file() {
     local file_Name=$(echo "$upload_result" | jq -r '.data.fileName')
     local md5=$(echo "$upload_result" | jq -r '.data.md5')
     local timestamp=$(date +"%b %d %H:%M:%S UTC %Y")
-    local file_size=$(echo "$(stat -c "%s" "$file_path") / (1024*1024*1024)" | bc -l)GB
 
     # Send details on Telegram
-    send_telegram_message "File Name: $file_Name  %0ATimestamp: $timestamp  %0ASize: $file_size  %0Amd5: $md5 %0ADownload link: $download_link"
+    send_telegram_message "File Name: $file_Name  %0ATimestamp: $timestamp %0Amd5: $md5 %0ABuild Time: $min %0ADownload link: $download_link"
 }
 
 ## Notify
@@ -47,22 +46,16 @@ build_m307f() {
     m evolution
 }
 
-start_time=$(date +%s.%N)
+start=$(date +%s)
 build_m307f
 if [ $? -ne 0 ]; then
     send_telegram_message "Build Failed :("
     exit 1
 fi
-end_time=$(date +%s.%N)
-execution_time_seconds=$(echo "$end_time - $start_time" | bc)
-
-# Convert seconds to hours, minutes, and seconds
-hours=$((execution_time_seconds / 3600))
-minutes=$(( (execution_time_seconds % 3600) / 60 ))
-seconds=$((execution_time_seconds % 60))
-# Format the output
-formatted_time="${hours}h${minutes}m${seconds}s"
-send_telegram_message "Evolution X Build for M307f Completed in $formatted_time"
+end=$(date +%s)
+seconds=$((end - start))
+min=$((seconds / 60))"
+send_telegram_message "Evolution X Build for M307f Completed in $min"
 
 # Upload
 filepath=$(find out/target/product/m307f/ -name 'Evolution*.zip' -print -quit)
