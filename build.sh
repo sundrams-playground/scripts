@@ -54,33 +54,10 @@ if [ $? -ne 0 ]; then
 fi
 end=$(date +%s)
 seconds=$((end - start))
-min=$((seconds / 60))"
+min=$((seconds / 60))
 send_telegram_message "Evolution X Build for M307f Completed in $min"
 
 # Upload
 filepath=$(find out/target/product/m307f/ -name 'Evolution*.zip' -print -quit)
 upload_file "$filepath"
 
-build_m307fn() {
-    lunch lineage_m307fn-userdebug
-    export WITH_GMS=true
-    m installclean
-    m evolution
-}
-
-#start_time=$(date +%s.%N)
-#build_m307fn
-#end_time=$(date +%s.%N)
-#execution_time_seconds=$(echo "$end_time - $start_time" | bc)
-
-# Convert seconds to hours, minutes, and seconds
-#hours=$((execution_time_seconds / 3600))
-#minutes=$(( (execution_time_seconds % 3600) / 60 ))
-#seconds=$((execution_time_seconds % 60))
-# Format the output
-#formatted_time="${hours}h${minutes}m${seconds}s"
-#send_telegram_message "Evolution X Build for M307fn Completed in $formatted_time"
-
-#upload again
-#upload_file "$filepath"
-#filepath=$(find out/target/product/m307fn/ -name 'Evolution*.zip' -print -quit)
