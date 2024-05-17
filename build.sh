@@ -26,7 +26,7 @@ upload_file() {
     local timestamp=$(date +"%b %d %H:%M:%S UTC %Y")
 
     # Send details on Telegram
-    send_telegram_message "File Name: $file_Name  %0ATimestamp: $timestamp %0Amd5: $md5 %0ABuild Time: $min %0ADownload link: $download_link"
+    send_telegram_message "File Name: $file_Name  %0ATimestamp: $timestamp %0Amd5: $md5 %0ADownload link: $download_link"
 }
 
 ## Notify
@@ -46,18 +46,16 @@ build_m307f() {
     m evolution
 }
 
-start=$(date +%s)
-build_m307f
+#build_m307f
 if [ $? -ne 0 ]; then
     send_telegram_message "Build Failed :("
     exit 1
 fi
-end=$(date +%s)
-seconds=$((end - start))
-min=$((seconds / 60))
-send_telegram_message "Evolution X Build for M307f Completed in $min"
+
+send_telegram_message "Evolution X Build for M307f Completed !"
 
 # Upload
 filepath=$(find out/target/product/m307f/ -name 'Evolution*.zip' -print -quit)
+echo "File: $filepath"
 upload_file "$filepath"
 
