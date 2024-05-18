@@ -46,7 +46,7 @@ build_m307f() {
     m evolution
 }
 
-#build_m307f
+build_m307f
 if [ $? -ne 0 ]; then
     send_telegram_message "Build Failed :("
     exit 1
