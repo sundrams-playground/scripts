@@ -42,6 +42,7 @@ build_m307f() {
     . build/envsetup.sh
     export WITH_GMS=true
     lunch lineage_m307f-userdebug
+    lunch lineage_m307f-ap1a-userdebug
     m installclean
     m bacon
 }
